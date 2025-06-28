@@ -110,7 +110,7 @@ body {
   border-radius: 1.5rem;
   box-shadow: 0 8px 32px 8px #7c3aed99, 0 -8px 32px 8px #7c3aed99, 0 1.5px 0 #a855f7;
   padding: 2.5rem 1.5rem 1.5rem 1.5rem;
-  margin: 0 auto 2rem auto;
+  margin: 0 auto 0 auto;
   max-width: 900px;
   width: 98vw;
   min-width: 180px;
@@ -252,7 +252,7 @@ body {
     flex-direction: column !important;
     display: flex !important;
     align-items: stretch !important;
-    gap: 1.2rem !important;
+    gap: 0 !important;
   }
 }
 
@@ -271,4 +271,90 @@ body {
       #120033 120px
     );
   background-blend-mode: multiply;
+}
+
+.hobby-panels {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 0;
+  justify-content: center;
+  align-items: stretch;
+  width: 100%;
+  margin-top: 2rem;
+}
+@media (max-width: 700px) {
+  .hobby-panels {
+    grid-template-columns: 1fr;
+    margin-top: 1rem;
+  }
+}
+
+/* Hamburger menu styles */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  z-index: 11000;
+  margin-left: 1rem;
+}
+.hamburger span {
+  height: 4px;
+  width: 100%;
+  background: #a855f7;
+  margin: 5px 0;
+  border-radius: 2px;
+  transition: 0.4s;
+  display: block;
+}
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(7px, 7px);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+@media (max-width: 700px) {
+  .navbar {
+    display: none !important;
+  }
+  .hamburger {
+    display: flex !important;
+  }
+  .mobile-nav {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 70vw;
+    max-width: 320px;
+    height: 100vh;
+    background: #18181b;
+    box-shadow: 2px 0 24px #a855f7aa;
+    z-index: 12000;
+    padding-top: 4rem;
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(.4,2,.6,1);
+  }
+  .mobile-nav.open {
+    transform: translateX(0);
+  }
+  .mobile-nav a {
+    color: #fff;
+    padding: 1.2rem 2rem;
+    font-size: 1.5rem;
+    text-decoration: none;
+    border-bottom: 1px solid #333;
+    transition: background 0.2s;
+  }
+  .mobile-nav a.active,
+  .mobile-nav a:hover {
+    background: #a855f7;
+    color: #1a0036;
+  }
 }
