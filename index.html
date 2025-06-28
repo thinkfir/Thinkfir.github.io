@@ -5,44 +5,69 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Thinkfir's Portfolio</title>
   <link href="style.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Orbitron:700,900&display=swap" rel="stylesheet" />
 </head>
 <body>
-
-  <!-- Sidebar -->
-  <aside class="sidebar">
-    <nav>
-      <ul>
-        <li><a href="index.html" class="active">About Me</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="hobbies.html">Hobbies</a></li>
-      </ul>
+  <div class="main-bg"></div>
+  <header class="header">
+    <h1>Thinkfir</h1>
+    <nav class="navbar">
+      <a href="index.html" class="active">About Me</a>
+      <a href="projects.html">Projects</a>
+      <a href="hobbies.html">Hobbies</a>
+      <div class="slider"></div>
     </nav>
-  </aside>
-
-  <!-- Main Content -->
-  <main class="content">
-    <h1>Hey there!</h1>
-    <p>
-      Here’s some placeholder text. I think I’ll put a full introduction of myself here.
-      Hobbies probably in a different place.
-    </p>
+  </header>
+  <main>
+    <section class="glass-panel">
+      <h2>Welcome!</h2>
+      <p>
+        Hi, I'm Thinkfir. <br>
+        I'm passionate about technology, design, and building things that push the boundaries of what's possible.<br>
+        This site is a showcase of my work, interests, and ambitions. Explore my projects and hobbies to see what I'm up to!
+      </p>
+      <p>
+        <strong>Contact:</strong> <span style="color:#a855f7;">aryaaithal@gmail.com</span>
+      </p>
+    </section>
   </main>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <h2>Socials</h2>
-    <div class="social-links">
-      <a href="mailto:aryaaithal@gmail.com" target="_blank" rel="noopener noreferrer" title="Gmail">
-        <img src="images/icons8-gmail.svg"  width="40" />
-        <span>Gmail</span>
+  <footer class="site-footer">
+    <div class="socials">
+      <a href="mailto:aryaaithal@gmail.com" title="Gmail">
+        <img src="images/icons8-gmail.svg" alt="Gmail" />
+        Gmail
       </a>
       <a href="https://github.com/thinkfir" target="_blank" rel="noopener noreferrer" title="GitHub">
-        <img src="images/icons8-github-logo.svg"  width="40" />
-        <span>GitHub</span>
+        <img src="images/icons8-github-logo.svg" alt="GitHub" />
+        GitHub
       </a>
     </div>
-    <p>Made originally for Shipwrecked from Hack Club.<br />Resume available on request.</p>
+    <div>
+      Made for Shipwrecked from Hack Club. Resume available on request.
+    </div>
   </footer>
-
+  <script>
+    // Sliding underline for navbar
+    const nav = document.querySelector('.navbar');
+    const slider = nav.querySelector('.slider');
+    const links = Array.from(nav.querySelectorAll('a'));
+    function moveSliderTo(link) {
+      const rect = link.getBoundingClientRect();
+      const navRect = nav.getBoundingClientRect();
+      slider.style.left = (rect.left - navRect.left) + "px";
+      slider.style.width = rect.width + "px";
+    }
+    // Initial position
+    const active = nav.querySelector('.active') || links[0];
+    moveSliderTo(active);
+    // Animate on hover/click
+    links.forEach(link => {
+      link.addEventListener('mouseenter', () => moveSliderTo(link));
+      link.addEventListener('focus', () => moveSliderTo(link));
+      link.addEventListener('click', () => moveSliderTo(link));
+    });
+    nav.addEventListener('mouseleave', () => moveSliderTo(active));
+    window.addEventListener('resize', () => moveSliderTo(active));
+  </script>
 </body>
 </html>
