@@ -1,73 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Thinkfir's Hobbies</title>
-    <link rel="stylesheet" href="styles/styles.css" />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Thinkfir's Hobbies</title>
+  <link rel="stylesheet" href="styles/styles.css" />
+</head>
+<body class="bg-gray-900 text-gray-200 flex min-h-screen">
 
-  <body class="bg-white text-gray-800">
+  <!-- Sidebar -->
+  <div class="sidebar fixed top-0 left-0 h-full w-64 bg-gray-800 p-6 flex flex-col">
+    <nav class="flex-grow">
+      <ul class="space-y-4 text-lg font-semibold">
+        <li><a href="index.html" class="block px-3 py-2 rounded hover:bg-gray-700 hover:text-teal-400">About Me</a></li>
+        <li><a href="projects.html" class="block px-3 py-2 rounded hover:bg-gray-700 hover:text-teal-400">Projects</a></li>
+        <li><a href="hobbies.html" class="block px-3 py-2 rounded hover:bg-gray-700 hover:text-teal-400 font-teal-400">Hobbies</a></li>
+        <li><a href="contact.html" class="block px-3 py-2 rounded hover:bg-gray-700 hover:text-teal-400">Contact Me</a></li>
+      </ul>
+    </nav>
 
-    <!-- Sidebar -->
-    <div class="sidebar flex flex-col justify-between h-screen w-64 bg-gray-100 p-6 shadow-lg fixed left-0 top-0">
-      <!-- Navigation -->
-      <nav>
-        <ul class="space-y-4 text-lg">
-          <li><a href="index.html" class="text-blue-600 hover:underline">About Me</a></li>
-          <li><a href="projects.html" class="text-blue-600 hover:underline">Projects</a></li>
-          <li><a href="hobbies.html" class="text-blue-600 font-semibold underline">Hobbies</a></li>
-        </ul>
-      </nav>
+    <footer class="mt-auto pt-6 border-t border-gray-700 text-center">
+      <h2 class="text-xl font-bold mb-4 text-gray-300">Socials</h2>
+      <div class="flex justify-center space-x-6">
+        <a href="mailto:aryaaithal@gmail.com" target="_blank" class="hover:text-teal-400">
+          <img src="images/gmail.svg" alt="Gmail" width="40" />
+        </a>
+        <a href="https://github.com/thinkfir" target="_blank" class="hover:text-teal-400">
+          <img src="images/github.svg" alt="GitHub" width="40" />
+        </a>
+      </div>
+    </footer>
+  </div>
 
-      <!-- Contact Icons -->
-      <div class="mt-10">
-        <h2 class="text-md font-semibold mb-2">Contact Me</h2>
-        <div class="flex space-x-4">
-          <a href="mailto:aryaaithal@gmail.com" target="_blank" rel="noopener noreferrer">
-            <img src="images/gmail.svg" alt="Gmail" width="30" />
-          </a>
-          <a href="https://github.com/thinkfir" target="_blank" rel="noopener noreferrer">
-            <img src="images/github.svg" alt="GitHub" width="30" />
-          </a>
-        </div>
+  <!-- Main content -->
+  <main class="ml-64 flex-1 p-10 max-w-4xl">
+    <h1 class="text-4xl font-bold mb-6">My Hobbies</h1>
+    <p class="mb-8 text-lg max-w-prose leading-relaxed">
+      These are some things I enjoy doing in my free time!
+    </p>
+
+    <div class="grid gap-8 sm:grid-cols-1 md:grid-cols-2">
+      <div class="hobby-card bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+        <h2 class="text-2xl font-semibold mb-2 text-teal-400">Chess</h2>
+        <p>
+          I really enjoy playing chess! The logical thinking it requires and the lack of luck make it especially appealing to me. I'm rated 1500 FIDE and have competed in two Canadian Youth Chess Championships, as well as winning multiple regional tournaments.
+        </p>
+      </div>
+
+      <div class="hobby-card bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+        <h2 class="text-2xl font-semibold mb-2 text-teal-400">Outdoors</h2>
+        <p>
+          I love being outside — especially biking, which I do a lot in the summer, often on hilly terrain. I'm also active in Army Cadets, where I take part in many outdoor training activities.
+        </p>
+      </div>
+
+      <div class="hobby-card bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+        <h2 class="text-2xl font-semibold mb-2 text-teal-400">Coding</h2>
+        <p>
+          I love building projects and creating tools I can use or share. I mostly code in JavaScript, and I’m currently learning Python and C++. I also enjoy attending hackathons — they’re a great way to meet other coders. I've been to JAMHacks 9 @ UW and MasseyHacks X.
+        </p>
       </div>
     </div>
+  </main>
 
-    <!-- Main Content -->
-    <main class="ml-64 p-8">
-      <h1 class="text-3xl font-bold mb-4">My Hobbies</h1>
-      <p class="mb-8 text-lg">These are some things I enjoy doing in my free time!</p>
-
-      <div class="grid gap-8 sm:grid-cols-1 md:grid-cols-2">
-        <!-- Chess -->
-        <div class="hobby-card bg-white border rounded-xl shadow-md p-6 hover:shadow-lg transition">
-          <h2 class="text-xl font-semibold mb-2">Chess</h2>
-          <p>
-            I really enjoy playing chess! The logical thinking it requires and the lack of luck make it especially appealing to me.
-            I'm rated 1500 FIDE and have competed in two Canadian Youth Chess Championships, as well as winning multiple regional tournaments.
-          </p>
-        </div>
-
-        <!-- Outdoors -->
-        <div class="hobby-card bg-white border rounded-xl shadow-md p-6 hover:shadow-lg transition">
-          <h2 class="text-xl font-semibold mb-2">Outdoors</h2>
-          <p>
-            I love being outside — especially biking, which I do a lot in the summer, often on hilly terrain.
-            I'm also active in Army Cadets, where I take part in many outdoor training activities
-        </div>
-
-        <!-- Coding -->
-        <div class="hobby-card bg-white border rounded-xl shadow-md p-6 hover:shadow-lg transition">
-          <h2 class="text-xl font-semibold mb-2">Coding</h2>
-          <p>
-            I love building projects and creating tools I can use or share. I mostly code in JavaScript,
-            and I’m currently learning Python and C++. I also enjoy attending hackathons — they’re a great way to meet other coders.
-            I've been to JAMHacks 9 @ UW and MasseyHacks X.
-          </p>
-        </div>
-      </div>
-    </main>
-
-  </body>
+</body>
 </html>
