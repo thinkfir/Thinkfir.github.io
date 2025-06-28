@@ -1,5 +1,10 @@
 /* Glassmorphism & Neon UI */
 
+/* Add universal box-sizing for easier layout control */
+* {
+  box-sizing: border-box;
+}
+
 body {
   min-height: 100vh;
   margin: 0;
@@ -14,15 +19,21 @@ body {
       #2d006e 120px
     );
   background-blend-mode: multiply;
-body {
-  position: relative;
-  z-index: 0;
-}
+  /* Corrected duplicated body selector and moved color here */
   color: #e0e0ff;
   display: flex;
-  flex-direction: column;
-  overflow-x: hidden;
+  flex-direction: column; /* Essential for sticky footer */
+  overflow-x: hidden; /* Helps prevent unwanted horizontal scroll */
 }
+
+/* Add flex-grow to the main content wrapper (assuming you added a <main> tag) */
+/* This makes the main content area expand to push the footer down */
+main {
+  flex-grow: 1;
+  /* Optional: Add some padding to main if content touches footer too much */
+  padding-bottom: 2rem; /* Adjust as needed */
+}
+
 
 .header {
   width: 100vw;
@@ -54,7 +65,8 @@ body {
   display: flex;
   justify-content: center;
   gap: 2.5rem;
-  margin: 2rem 0 2.5rem 0;
+  /* Reduced top and bottom margins for more compactness */
+  margin: 1.5rem 0; /* Reduced from 2rem 0 2.5rem 0 */
   position: relative;
 }
 
@@ -112,7 +124,7 @@ body {
   border-radius: 1.5rem;
   box-shadow: 0 16px 96px 32px #1a0036cc, 0 -16px 96px 32px #1a0036cc, 0 1.5px 0 #a855f7;
   padding: 2.5rem 1.5rem 1.5rem 1.5rem;
-  margin: 0 auto 0 auto;
+  margin: 0 auto; /* Center horizontally, remove vertical margin */
   max-width: 900px;
   width: 98vw;
   min-width: 180px;
@@ -121,9 +133,10 @@ body {
   border: 3px double #fff;
   position: relative;
   z-index: 1;
-  margin-bottom: 28vh;
+  /* Removed margin-bottom: 28vh; - this was causing large space before footer */
   font-size: clamp(1.2rem, 3vw, 2.2rem);
 }
+
 .main-bg {
   background: linear-gradient(
     to bottom,
@@ -147,7 +160,9 @@ body {
 .glass-panel h2 {
   color: #fff;
   font-size: 1.7rem;
-  margin-bottom: 1rem;
+  /* Consider adjusting default margins for compactness */
+  margin-top: 0.8rem; /* Adjusted for less top space */
+  margin-bottom: 0.8rem; /* Adjusted for less bottom space */
   letter-spacing: 0.08em;
   text-shadow: 0 0 4px #3aeed6;
 }
@@ -156,7 +171,9 @@ body {
   color: #e0e0ff;
   font-size: 1.08rem;
   line-height: 1.7;
-  margin-bottom: 1.2rem;
+  /* Consider adjusting default margins for compactness */
+  margin-top: 0.5rem; /* Adjusted for less top space */
+  margin-bottom: 0.8rem; /* Adjusted for less bottom space */
 }
 
 .site-footer {
@@ -166,7 +183,7 @@ body {
   box-shadow: none;
   padding: 0.5rem 0 0.2rem 0;
   text-align: center;
-  position: static;
+  position: static; /* Correct for flexbox sticky footer */
   left: 0;
   bottom: 0;
   z-index: 10000;
@@ -174,6 +191,7 @@ body {
   color: #a855f7;
   letter-spacing: 0.08em;
   pointer-events: auto;
+  /* Duplicated background properties moved to the final instance below */
 }
 
 .site-footer .socials {
@@ -215,25 +233,26 @@ body {
   border-radius: 8px;
 }
 
+/* --- Media Queries for Mobile Responsiveness --- */
 @media (max-width: 700px) {
   .glass-panel {
-    padding: 1.2rem 0.7rem 1.2rem 0.7rem;
+    padding: 1.2rem 0.7rem; /* Simplified padding */
     border-radius: 1.2rem;
-    width: 98vw;
-    max-width: 100vw;
-    min-width: 90vw;
-    min-height: 60vh;
+    /* Adjusted width and margin for better mobile centering and less overflow risk */
+    width: calc(100% - 2rem); /* 1rem margin on each side */
+    margin: 0 auto; /* Center horizontally */
+    max-width: none; /* Remove max-width restriction for small screens */
+    min-width: unset; /* Allow shrinking below min-width for very small screens */
     height: auto;
     margin-top: calc(6rem + 56px);
-    margin-bottom: 12rem;
+    /* Removed the previous margin-bottom values - main's flex-grow handles spacing */
     scroll-margin-top: calc(6rem + 56px);
     box-sizing: border-box;
-    margin-bottom: 8vw;
-    font-size: clamp(1.3rem, 7vw, 2.1rem);
+    font-size: clamp(1.3rem, 7vw, 2.1rem); /* Kept this as it was fine */
     display: block;
   }
   .header {
-    padding: 0.6rem 0 0.6rem 0;
+    padding: 0.6rem 0; /* Simplified padding */
   }
   .header h1 {
     font-size: 1.5rem;
@@ -247,11 +266,12 @@ body {
   .site-footer {
     font-size: 1.2rem;
     padding: 2rem 0 1rem 0;
-    position: static;
+    position: static; /* Ensure it stays static */
   }
   .site-footer .socials {
     gap: 1.2rem;
   }
+  /* This rule helps with layout inside main content areas */
   main > div, main > section {
     flex-direction: column !important;
     display: flex !important;
@@ -260,10 +280,7 @@ body {
   }
 }
 
-.site-footer {
-  background: #18181b;
-}
-
+/* Final footer background definitions (last one overrides previous ones) */
 .site-footer {
   background:
     linear-gradient(135deg, #120033 0%, #3a1a5d 60%, #0a001a 100%),
@@ -280,16 +297,18 @@ body {
 .hobby-panels {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 0;
+  gap: 0; /* Ensures no gap between panels themselves */
   justify-content: center;
   align-items: stretch;
   width: 100%;
-  margin-top: 2rem;
+  margin-top: 2rem; /* Keep some space above */
+  /* If you still have too much space *between* projects,
+     check margins/padding on elements *inside* each hobby panel item. */
 }
 @media (max-width: 700px) {
   .hobby-panels {
-    grid-template-columns: 1fr;
-    margin-top: 1rem;
+    grid-template-columns: 1fr; /* Stack panels on mobile */
+    margin-top: 1rem; /* Reduce top margin for mobile */
   }
 }
 
