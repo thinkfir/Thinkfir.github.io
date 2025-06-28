@@ -2,51 +2,44 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Thinkfir's Portfolio</title>
   <link rel="stylesheet" href="styles/styles.css" />
 </head>
-<body class="flex flex-col min-h-screen">
+<body class="bg-gray-900 text-gray-200 flex min-h-screen">
 
-  <div class="flex flex-1">
+  <!-- Sidebar -->
+  <div class="sidebar fixed top-0 left-0 h-full w-64 bg-gray-800 p-6 flex flex-col">
+    <nav class="flex-grow">
+      <ul class="space-y-4 text-lg font-semibold">
+        <li><a href="index.html" class="block px-3 py-2 rounded hover:bg-gray-700 hover:text-teal-400">About Me</a></li>
+        <li><a href="projects.html" class="block px-3 py-2 rounded hover:bg-gray-700 hover:text-teal-400">Projects</a></li>
+        <li><a href="hobbies.html" class="block px-3 py-2 rounded hover:bg-gray-700 hover:text-teal-400">Hobbies</a></li>
+        <li><a href="contact.html" class="block px-3 py-2 rounded hover:bg-gray-700 hover:text-teal-400">Contact Me</a></li>
+      </ul>
+    </nav>
 
-    <!-- Sidebar + icons below -->
-    <div class="flex flex-col">
-      <aside class="sidebar bg-gray-200 w-60 p-6">
-        <nav>
-          <ul class="space-y-4">
-            <li><a href="index.html" class="font-semibold text-blue-700">About Me</a></li>
-            <li><a href="projects.html" class="hover:text-blue-600">Projects</a></li>
-            <li><a href="hobbies.html" class="hover:text-blue-600">Hobbies</a></li>
-            <li><a href="contact.html" class="hover:text-blue-600">Contact Me</a></li>
-          </ul>
-        </nav>
-      </aside>
-
-      <div class="flex justify-center space-x-6 p-4 bg-gray-100">
-        <a href="mailto:aryaaithal@gmail.com" target="_blank" rel="noopener noreferrer">
-          <img src="images/gmail.svg" alt="Gmail" class="w-8 h-8" />
+    <!-- Footer icons below sidebar nav -->
+    <footer class="mt-auto pt-6 border-t border-gray-700 text-center">
+      <h2 class="text-xl font-bold mb-4 text-gray-300">Socials</h2>
+      <div class="flex justify-center space-x-6">
+        <a href="mailto:aryaaithal@gmail.com" target="_blank" class="hover:text-teal-400">
+          <img src="images/gmail.svg" alt="Gmail" width="40" />
         </a>
-        <a href="https://github.com/thinkfir" target="_blank" rel="noopener noreferrer">
-          <img src="images/github.svg" alt="GitHub" class="w-8 h-8" />
+        <a href="https://github.com/thinkfir" target="_blank" class="hover:text-teal-400">
+          <img src="images/github.svg" alt="GitHub" width="40" />
         </a>
       </div>
-    </div>
-
-    <!-- Main content -->
-    <main class="flex-1 p-10">
-      <h1 class="text-4xl font-bold mb-4">Hey there!</h1>
-      <p class="text-lg max-w-prose">
-        Here’s some placeholder text. I think I’ll put a full introduction of myself here.
-        Hobbies will have their own page.
-      </p>
-    </main>
-
+    </footer>
   </div>
 
-  <footer class="bg-gray-100 text-center p-4 text-sm text-gray-600 mt-auto">
-    Made originally for Shipwrecked from Hack Club. Resume available on request.
-  </footer>
+  <!-- Main content -->
+  <main class="ml-64 flex-1 p-10">
+    <h1 class="text-4xl font-bold mb-6">Hey there!</h1>
+    <p class="text-lg leading-relaxed max-w-prose">
+      Here's some placeholder text, I think I'll put a full introduction of myself here. Hobbies probably in a different place.
+    </p>
+  </main>
 
 </body>
 </html>
