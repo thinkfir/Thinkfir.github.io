@@ -1,3 +1,4 @@
+/* Base resets and fonts */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,80 +7,85 @@
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #1e1e2f;
-  color: #f0e9ff;
+  background-color: #1a1a2e; /* dark purple-ish */
+  color: #fce77d; /* soft yellow */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  font-size: 16px;
+  line-height: 1.6;
 }
 
 /* Sidebar */
 .sidebar {
   position: fixed;
-  top: 0; left: 0;
-  width: 240px;
+  top: 0;
+  left: 0;
   height: 100vh;
-  background-color: #3a2e6e; /* deep purple */
-  padding: 2rem 1rem;
+  width: 240px;
+  background: #311b92; /* deep purple */
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
 }
 
-.sidebar ul {
+.sidebar nav ul {
   list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
 }
 
-.sidebar li + li {
-  margin-top: 1.5rem;
-}
-
-.sidebar a {
+.sidebar nav a {
+  color: #fce77d;
   text-decoration: none;
-  color: #e5d7ff;
   font-weight: 600;
-  font-size: 1.1rem;
-  display: block;
-  transition: color 0.3s ease;
+  font-size: 1.125rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
 }
 
-.sidebar a:hover,
-.sidebar a.active {
-  color: #f7c548; /* yellow accent */
-  text-decoration: underline;
+.sidebar nav a:hover,
+.sidebar nav a.active {
+  background-color: #fce77d;
+  color: #311b92;
 }
 
-/* Main Content */
+/* Main content area */
 .content {
-  margin-left: 260px;
+  margin-left: 240px;
   padding: 3rem 2rem;
-  max-width: 700px;
+  max-width: 900px;
+  flex-grow: 1;
 }
 
 .content h1 {
-  font-size: 2.75rem;
+  font-size: 2.5rem;
+  font-weight: 700;
   margin-bottom: 1rem;
-  color: #f7c548; /* yellow */
+  color: #fce77d;
 }
 
 .content p {
-  line-height: 1.6;
-  font-size: 1.15rem;
   max-width: 600px;
-  color: #ddd6ff;
+  font-size: 1.125rem;
+  color: #e6e6e6;
 }
 
 /* Footer */
 .footer {
-  margin-left: 260px;
-  background-color: #3a2e6e;
+  background-color: #311b92;
+  color: #fce77d;
   padding: 1.5rem 2rem;
-  color: #d7cfff;
   text-align: center;
-  margin-top: auto;
+  margin-left: 240px;
 }
 
 .footer h2 {
-  font-size: 1.5rem;
+  font-weight: 700;
+  font-size: 1.25rem;
   margin-bottom: 1rem;
-  color: #f7c548;
 }
 
 .social-links {
@@ -90,25 +96,44 @@ body {
 }
 
 .social-links a {
-  color: #ddd6ff;
+  color: #fce77d;
   text-decoration: none;
-  font-weight: 600;
-  font-size: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
   transition: color 0.3s ease;
 }
 
-.social-links a img {
-  margin-bottom: 0.5rem;
-}
-
 .social-links a:hover {
-  color: #f7c548;
+  color: #ffe066; /* brighter yellow on hover */
 }
 
-.footer p {
-  font-size: 0.9rem;
-  color: #bbb3d3;
+.social-links img {
+  width: 40px;
+  height: 40px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .sidebar nav ul {
+    flex-direction: row;
+    gap: 2rem;
+  }
+  .content {
+    margin-left: 0;
+    padding: 1.5rem;
+  }
+  .footer {
+    margin-left: 0;
+  }
 }
