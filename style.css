@@ -221,8 +221,9 @@ body {
     min-width: 90vw;
     min-height: 60vh;
     height: auto;
-    margin-top: 6rem;
+    margin-top: calc(6rem + 56px);
     margin-bottom: 12rem;
+    scroll-margin-top: calc(6rem + 56px);
     box-sizing: border-box;
     margin-bottom: 8vw;
     font-size: clamp(1.3rem, 7vw, 2.1rem);
