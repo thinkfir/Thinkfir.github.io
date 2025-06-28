@@ -10,12 +10,24 @@
 <body>
   <div class="main-bg"></div>
   <header class="header">
-    <h1>Thinkfir</h1>
+    <div style="display: flex; align-items: center;">
+      <div class="hamburger" id="hamburger-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <h1 style="flex:1;text-align:center;">Thinkfir</h1>
+    </div>
     <nav class="navbar">
       <a href="index.html">About Me</a>
       <a href="projects.html">Projects</a>
       <a href="hobbies.html" class="active">Hobbies</a>
       <div class="slider"></div>
+    </nav>
+    <nav class="mobile-nav" id="mobile-nav">
+      <a href="index.html">About Me</a>
+      <a href="projects.html">Projects</a>
+      <a href="hobbies.html" class="active">Hobbies</a>
     </nav>
   </header>
   <main>
@@ -71,6 +83,20 @@
     });
     nav.addEventListener('mouseleave', () => moveSliderTo(active));
     window.addEventListener('resize', () => moveSliderTo(active));
+    // Hamburger menu functionality
+    const hamburger = document.getElementById('hamburger-menu');
+    const mobileNav = document.getElementById('mobile-nav');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileNav.classList.toggle('open');
+    });
+    // Close menu on nav click
+    Array.from(mobileNav.querySelectorAll('a')).forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        mobileNav.classList.remove('open');
+      });
+    });
   </script>
 </body>
 </html>
