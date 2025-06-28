@@ -1,6 +1,6 @@
 /* Glassmorphism & Neon UI */
 
-/* Add universal box-sizing for easier layout control */
+/* Universal box-sizing for consistent layout calculations */
 * {
   box-sizing: border-box;
 }
@@ -9,6 +9,7 @@ body {
   min-height: 100vh;
   margin: 0;
   font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* Combined and cleaned up background styles */
   background:
     linear-gradient(135deg, #2d006e 0%, #7c3aed 60%, #1a0036 100%),
     repeating-linear-gradient(
@@ -19,21 +20,20 @@ body {
       #2d006e 120px
     );
   background-blend-mode: multiply;
-  /* Corrected duplicated body selector and moved color here */
-  color: #e0e0ff;
+  color: #e0e0ff; /* Text color for the body */
   display: flex;
-  flex-direction: column; /* Essential for sticky footer */
-  overflow-x: hidden; /* Helps prevent unwanted horizontal scroll */
+  flex-direction: column; /* This is key for the sticky footer */
+  overflow-x: hidden; /* Prevents horizontal scrollbars from content overflow */
+  position: relative; /* Set position for possible absolute children like main-bg */
+  z-index: 0;
 }
 
-/* Add flex-grow to the main content wrapper (assuming you added a <main> tag) */
-/* This makes the main content area expand to push the footer down */
+/* The <main> element will grow to fill available space, pushing the footer down */
 main {
-  flex-grow: 1;
-  /* Optional: Add some padding to main if content touches footer too much */
-  padding-bottom: 2rem; /* Adjust as needed */
+  flex-grow: 1; /* Allows main content to take up all available vertical space */
+  padding-bottom: 2rem; /* Adds some space between content and footer */
+  /* You might also want padding-top if your header is sticky and overlapping content */
 }
-
 
 .header {
   width: 100vw;
@@ -65,8 +65,8 @@ main {
   display: flex;
   justify-content: center;
   gap: 2.5rem;
-  /* Reduced top and bottom margins for more compactness */
-  margin: 1.5rem 0; /* Reduced from 2rem 0 2.5rem 0 */
+  /* Reduced vertical margins for compactness */
+  margin: 1.5rem 0;
   position: relative;
 }
 
@@ -102,7 +102,7 @@ main {
 
 /* Sliding underline animation for navbar */
 .navbar {
-  --slider-color: #a855f7;
+  --slider-color: #a855f7; /* Define custom property here */
 }
 .navbar .slider {
   position: absolute;
@@ -110,7 +110,7 @@ main {
   left: 0;
   height: 4px;
   width: 120px;
-  background: #a855f7;
+  background: var(--slider-color); /* Use custom property */
   border-radius: 2px;
   box-shadow: 0 0 16px #a855f7cc;
   transition: left 0.4s cubic-bezier(.4,2,.6,1), width 0.4s cubic-bezier(.4,2,.6,1);
@@ -124,7 +124,7 @@ main {
   border-radius: 1.5rem;
   box-shadow: 0 16px 96px 32px #1a0036cc, 0 -16px 96px 32px #1a0036cc, 0 1.5px 0 #a855f7;
   padding: 2.5rem 1.5rem 1.5rem 1.5rem;
-  margin: 0 auto; /* Center horizontally, remove vertical margin */
+  margin: 0 auto; /* Centers horizontally and removes the problematic vertical margin */
   max-width: 900px;
   width: 98vw;
   min-width: 180px;
@@ -133,7 +133,7 @@ main {
   border: 3px double #fff;
   position: relative;
   z-index: 1;
-  /* Removed margin-bottom: 28vh; - this was causing large space before footer */
+  /* Removed margin-bottom: 28vh; - this was the primary cause of large space before footer */
   font-size: clamp(1.2rem, 3vw, 2.2rem);
 }
 
@@ -150,7 +150,7 @@ main {
   position: fixed;
   left: 0;
   top: 0;
-  z-index: 1;
+  z-index: 1; /* Keep it below other content */
   pointer-events: none;
   mix-blend-mode: multiply;
   mask-image: none;
@@ -160,9 +160,9 @@ main {
 .glass-panel h2 {
   color: #fff;
   font-size: 1.7rem;
-  /* Consider adjusting default margins for compactness */
-  margin-top: 0.8rem; /* Adjusted for less top space */
-  margin-bottom: 0.8rem; /* Adjusted for less bottom space */
+  /* Adjusted margins for more compactness */
+  margin-top: 0.8rem;
+  margin-bottom: 0.8rem;
   letter-spacing: 0.08em;
   text-shadow: 0 0 4px #3aeed6;
 }
@@ -171,14 +171,24 @@ main {
   color: #e0e0ff;
   font-size: 1.08rem;
   line-height: 1.7;
-  /* Consider adjusting default margins for compactness */
-  margin-top: 0.5rem; /* Adjusted for less top space */
-  margin-bottom: 0.8rem; /* Adjusted for less bottom space */
+  /* Adjusted margins for more compactness */
+  margin-top: 0.5rem;
+  margin-bottom: 0.8rem;
 }
 
 .site-footer {
   width: 100vw;
-  background: rgba(20, 10, 40, 0.8);
+  /* Combined and cleaned up background styles */
+  background:
+    linear-gradient(135deg, #120033 0%, #3a1a5d 60%, #0a001a 100%),
+    repeating-linear-gradient(
+      135deg,
+      #120033 0px,
+      #3a1a5d 40px,
+      #5e2e91 80px,
+      #120033 120px
+    );
+  background-blend-mode: multiply;
   border-top: 2px solid #a855f7;
   box-shadow: none;
   padding: 0.5rem 0 0.2rem 0;
@@ -191,7 +201,6 @@ main {
   color: #a855f7;
   letter-spacing: 0.08em;
   pointer-events: auto;
-  /* Duplicated background properties moved to the final instance below */
 }
 
 .site-footer .socials {
@@ -224,6 +233,7 @@ main {
   z-index: 9999;
 }
 
+/* Custom scrollbar styling */
 ::-webkit-scrollbar {
   width: 10px;
   background: #2d006e;
@@ -233,29 +243,27 @@ main {
   border-radius: 8px;
 }
 
-/* --- Media Queries for Mobile Responsiveness --- */
+/* --- Mobile Responsiveness Media Queries (Max-width: 700px) --- */
 @media (max-width: 700px) {
   .glass-panel {
-    padding: 1.2rem 0.7rem; /* Simplified padding */
+    padding: 1.2rem 0.7rem; /* Simplified padding for mobile */
     border-radius: 1.2rem;
-    /* Adjusted width and margin for better mobile centering and less overflow risk */
-    width: calc(100% - 2rem); /* 1rem margin on each side */
-    margin: 0 auto; /* Center horizontally */
-    max-width: none; /* Remove max-width restriction for small screens */
-    min-width: unset; /* Allow shrinking below min-width for very small screens */
+    /* Adjusted width and margin for better mobile centering and less overflow */
+    width: calc(100% - 2rem); /* 1rem margin on each side to prevent touching edges */
+    margin: 0 auto; /* Center horizontally for mobile */
+    max-width: none; /* Remove max-width for full flexibility on small screens */
+    min-width: unset; /* Allow shrinking for very small screens */
     height: auto;
-    margin-top: calc(6rem + 56px);
-    /* Removed the previous margin-bottom values - main's flex-grow handles spacing */
+    margin-top: calc(6rem + 56px); /* Ensure header doesn't overlap content */
     scroll-margin-top: calc(6rem + 56px);
     box-sizing: border-box;
-    font-size: clamp(1.3rem, 7vw, 2.1rem); /* Kept this as it was fine */
-    display: block;
+    font-size: clamp(1.3rem, 7vw, 2.1rem);
   }
   .header {
-    padding: 0.6rem 0; /* Simplified padding */
+    padding: 0.6rem 0; /* Reduced header padding for mobile */
   }
   .header h1 {
-    font-size: 1.5rem;
+    font-size: 1.5rem; /* Smaller header title on mobile */
     padding: 0.2rem 0;
   }
   .navbar a {
@@ -266,87 +274,32 @@ main {
   .site-footer {
     font-size: 1.2rem;
     padding: 2rem 0 1rem 0;
-    position: static; /* Ensure it stays static */
+    position: static; /* Ensure it remains static */
   }
   .site-footer .socials {
     gap: 1.2rem;
   }
-  /* This rule helps with layout inside main content areas */
+  /* Rule to ensure direct children of <main> (like sections/divs) stack on mobile */
   main > div, main > section {
     flex-direction: column !important;
     display: flex !important;
     align-items: stretch !important;
     gap: 0 !important;
   }
-}
 
-/* Final footer background definitions (last one overrides previous ones) */
-.site-footer {
-  background:
-    linear-gradient(135deg, #120033 0%, #3a1a5d 60%, #0a001a 100%),
-    repeating-linear-gradient(
-      135deg,
-      #120033 0px,
-      #3a1a5d 40px,
-      #5e2e91 80px,
-      #120033 120px
-    );
-  background-blend-mode: multiply;
-}
-
-.hobby-panels {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 0; /* Ensures no gap between panels themselves */
-  justify-content: center;
-  align-items: stretch;
-  width: 100%;
-  margin-top: 2rem; /* Keep some space above */
-  /* If you still have too much space *between* projects,
-     check margins/padding on elements *inside* each hobby panel item. */
-}
-@media (max-width: 700px) {
+  /* Hobby panels specific mobile stacking */
   .hobby-panels {
-    grid-template-columns: 1fr; /* Stack panels on mobile */
-    margin-top: 1rem; /* Reduce top margin for mobile */
+    grid-template-columns: 1fr; /* Stacks hobby panels into a single column on mobile */
+    margin-top: 1rem; /* Reduced top margin for mobile */
+    gap: 1rem; /* Added a small gap between stacked hobby panels if needed */
   }
-}
 
-/* Hamburger menu styles */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  z-index: 11000;
-  margin-left: 1rem;
-}
-.hamburger span {
-  height: 4px;
-  width: 100%;
-  background: #a855f7;
-  margin: 5px 0;
-  border-radius: 2px;
-  transition: 0.4s;
-  display: block;
-}
-.hamburger.active span:nth-child(1) {
-  transform: rotate(45deg) translate(7px, 7px);
-}
-.hamburger.active span:nth-child(2) {
-  opacity: 0;
-}
-.hamburger.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(7px, -7px);
-}
-@media (max-width: 700px) {
+  /* Hamburger menu styles */
   .navbar {
-    display: none !important;
+    display: none !important; /* Hide regular navbar on mobile */
   }
   .hamburger {
-    display: flex !important;
+    display: flex !important; /* Show hamburger menu on mobile */
   }
   .mobile-nav {
     display: flex;
