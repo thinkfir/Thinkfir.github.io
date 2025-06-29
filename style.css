@@ -14,14 +14,14 @@ body {
     linear-gradient(135deg, #2d006e 0%, #7c3aed 60%, #1a0036 100%),
     repeating-linear-gradient(
       135deg,
-      #2d006e 0px,
+      #2d006e 0px,      
       #7c3aed 40px,
       #a855f7 80px,
       #2d006e 120px
     );
   background-blend-mode: multiply;
   color: #e0e0ff; /* Text color for the body */
-  display: flex;
+  display: flex;    /* Use flexbox for layout */
   flex-direction: column; /* This is key for the sticky footer */
   overflow-x: hidden; /* Prevents horizontal scrollbars from content overflow */
   position: relative; /* Set position for possible absolute children like main-bg */
@@ -34,7 +34,7 @@ main {
   padding-bottom: 2rem; /* Adds some space between content and footer */
   /* You might also want padding-top if your header is sticky and overlapping content */
 }
-
+/* Header styles */
 .header {
   width: 100vw;
   padding: 2.5rem 0 1.5rem 0;
@@ -105,13 +105,13 @@ main {
   --slider-color: #a855f7; /* Define custom property here */
 }
 .navbar .slider {
-  position: absolute;
-  bottom: -8px;
-  left: 0;
-  height: 4px;
-  width: 120px;
+  position: absolute; /* Position relative to the navbar */
+  bottom: -8px; /* Position the slider below the links */
+  left: 0; /* Start at the left edge */
+  height: 4px;  /* Height of the slider */
+  width: 120px; /* Initial width of the slider */
   background: var(--slider-color); /* Use custom property */
-  border-radius: 2px;
+  border-radius: 2px; /* Rounded corners for the slider */
   box-shadow: 0 0 16px #a855f7cc;
   transition: left 0.4s cubic-bezier(.4,2,.6,1), width 0.4s cubic-bezier(.4,2,.6,1);
   z-index: 2;
@@ -334,3 +334,4 @@ main {
     color: #1a0036;
   }
 }
+
